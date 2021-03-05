@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using TMPro;
+
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
+    public TextMeshProUGUI scoreText;
 
     private float spawnCoolDown = 1.0f;
+    private int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        UpdateScore(0);
         StartCoroutine(SpawnTarget());
     }
 
@@ -31,5 +36,11 @@ public class GameManager : MonoBehaviour
 
         Instantiate(targets[index]);
         }
+    }
+
+    public void UpdateScore(int scorePointsToAdd)
+    {
+        score += scorePointsToAdd;
+        scoreText.text = "Score: " + score;
     }
 }

@@ -11,11 +11,19 @@ public class Target : MonoBehaviour
     private float rangeX = 4.4f;
     private float spawnPosY = - 4.4f;
 
+    [SerializeField]
+    private int pointValue;
+
+    [SerializeField]
+    ParticleSystem explosionParticle;
+
     private Rigidbody targetRigidbody;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         targetRigidbody = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         transform.position = RandomSpawnPos() ;
 
@@ -32,6 +40,11 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        if (gameObject.CompareTag("8ball"))
+            gameManager.UpdateScore(1 * Random.Range(-5, 5));
+        else
+            gameManager.UpdateScore(1 * pointValue);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)
