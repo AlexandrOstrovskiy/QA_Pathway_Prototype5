@@ -39,17 +39,24 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (gameManager.isGameOn)
+        {
         Destroy(gameObject);
         if (gameObject.CompareTag("8ball"))
             gameManager.UpdateScore(1 * Random.Range(-5, 5));
         else
             gameManager.UpdateScore(1 * pointValue);
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        //if (!(other.gameObject.CompareTag("Bad") || other.gameObject.CompareTag("8ball")))
+        //if (other.gameObject.CompareTag("Untagged"))
+        if (gameObject.CompareTag("Good"))
+            gameManager.GameOver();
     }
 
 

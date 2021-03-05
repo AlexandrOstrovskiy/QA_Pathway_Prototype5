@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7644252081733582317}
   m_Layer: 0
   m_Name: Ball_Eye_Prefab
-  m_TagString: Untagged
+  m_TagString: Bad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6ac9456ab3e47ccaf03e6ed1732169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: -1
+  pointValue: -2
   explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb,
     type: 3}
